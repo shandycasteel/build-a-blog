@@ -2,12 +2,18 @@
 {% block content %}
 
 <main>
-<h1>Build-a-Blog</h1>
 
-{% for blog in all_posts %}
-    <h2><a href="./blog?id={{ blog.id }}"">{{blog.title}}</a></h2>
-    <p>{{blog.body}}</p>
-{% endfor %}
+    {% if all_posts %}
+        {% for blog in all_posts %}
+            <h2><a href="./blog?id={{ blog.id }}"">{{blog.title}}</a></h2>
+            <p>{{blog.body}}</p>
+        {% endfor %}
+
+    {% else %}
+        <h2>Nothing here yet.</h2>
+    
+    {% endif %}
+
 
 {% endblock %}
 

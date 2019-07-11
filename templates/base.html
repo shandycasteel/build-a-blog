@@ -3,23 +3,29 @@
 
 <head>
     <title>{{title}}</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="styles.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/blog">Home</a></li>
-                <li><a href="/newpost">Create Post</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1>Build-a-Blog</h1>
+            <p>LC101 - Unit 2</p>
+        </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="/blog">Home</a></li>
+            <li><a href="/newpost">Create Post</a></li>
+        </ul>
+    </nav>
 
     {% block content %}
     {% endblock %}
 
+    <footer></footer>
 </body>
 
 </html>
