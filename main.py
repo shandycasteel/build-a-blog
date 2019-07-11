@@ -1,10 +1,11 @@
-from flask import Flask, request, redirect, render_template
+from flask import Flask, request, redirect, render_template, flash
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://build-a-blog:build-a-blog@localhost:8889/build-a-blog'
-app.config['SQLALCHEMY_ECHO'] = True
+app.config["DEBUG"] = True
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://build-a-blog:build-a-blog@localhost:8889/build-a-blog"
+app.config["SQLALCHEMY_ECHO"] = True
+app.secret_key = "z!97tvMYD_E92zNVBGUq-_UzfGHQVk"
 db = SQLAlchemy(app)
 
 
@@ -20,17 +21,32 @@ class Blog(db.Model):
         self.body = body
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route("/blog")
 def index():
-
-    if request.method == 'POST':
-        new_post = Blog(request.form['title'], request.form['body'])
-        db.session.add(new_post)
-        db.session.commit()
 
     all_posts = Blog.query.all()
 
-    return render_template("base.html", all_posts=all_posts)
+    return render_template("blog.html", all_posts=all_posts)
+
+@app.route("/newpost", methods=["POST", "GET"])
+def add_post():
+
+    if request.method == "POST":
+        new_title = request.form["title"]
+        new_body = request.form["body"]
+
+        if len(new_title) != 0 and len(new_body) != 0:
+            new_post = Blog(new_title, new_body)
+            db.session.add(new_post)
+            db.session.commit()
+            return redirect("/blog")
+        else:
+            flash("Posts require both a title and a body . . . try again!")
+            return render_template("add_post.html", new_title=new_title, new_body=new_body, title="Add a Blog Entry")
+
+    else:
+        return render_template("add_post.html")
+        
 
 if __name__ == "__main__":
     app.run()

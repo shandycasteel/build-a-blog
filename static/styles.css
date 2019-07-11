@@ -1,0 +1,68 @@
+html,
+body {
+    margin: 2.5em;
+    background-color: whitesmoke;
+}
+
+form{
+    display: grid;
+    grid-template-columns: minmax(min-content, 50%);
+    align-content: center;
+    justify-content: center;
+    row-gap: 1.5em;
+}
+
+input{
+    padding-left: 0.5em;
+    height: 2.5em;
+    font-size: 0.9em;
+}
+
+input[type=submit] {
+    padding: 0.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: .20em;
+    color: azure;
+    background-color: slategrey;
+
+}
+
+label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: -1.75em;
+}
+
+textarea {
+    resize: none;
+    font-size: 0.9em;
+    padding: 1.5em;
+}
+
+h1, h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    text-decoration: underline;
+    text-transform: uppercase;
+    padding-bottom: 2.5em;
+}
+
+p {
+    white-space: pre-wrap;
+}
+
+ul {
+    list-style-type: none;
+}
+#error {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: red;
+    text-align: center;
+}
