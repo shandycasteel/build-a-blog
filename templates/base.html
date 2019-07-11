@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Build-a-Blog</title>
+</head>
+
+<body>
+
+<!-- Form to add a new post -->
+<h1>Add a new post:</h1>
+<form method='POST'>
+    <label for="title">Post title:</label>
+        <input type="text" name="title" id="title">
+    <br>
+    <label for="body">Post body:</label>
+        <textarea name="body"></textarea>
+
+    <input type="submit" value="Post!">
+</form>
+
+<hr>
+<h1>Most recent posts:</h1>
+
+{% for blog in all_posts %}
+    <h2>{{blog.title}}</h2>
+    <p style="white-space: pre-wrap">{{blog.body}}</p>
+    <hr>
+{% endfor %}
+
+
+<!-- Display all blog posts -->
+
+
+</body>
+
+</html>
