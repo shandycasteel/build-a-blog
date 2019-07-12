@@ -43,6 +43,7 @@ def index():
         all_posts = Blog.query.order_by(Blog.posted.desc()).all()
         return render_template("blog.html", all_posts=all_posts)
 
+
 @app.route("/newpost", methods=["POST", "GET"])
 def add_post():
 
@@ -71,7 +72,7 @@ def add_post():
     # Show the form
     else:
         return render_template("add_post.html")
-        
+
 
 if __name__ == "__main__":
     app.run()
