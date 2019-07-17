@@ -5,7 +5,7 @@
 <h1>Add a New Post</h1>
 {% with messages = get_flashed_messages() %}
     {% if messages %}
-        <ul class=flshes id="error">
+        <ul id="error">
         {% for message in messages %}
             <li>{{ message }}</li>
         {% endfor %}
